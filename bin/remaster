@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+# Save current branch name
+current_branch=$(git branch --show-current)
+
+# Checkout develop branch and pull latest changes
+git checkout develop
+git pull
+
+# switch back to previous branch and do rebase
+git checkout $current_branch
+git rebase develop
+
+# Optional: push changes to remote branch
+# git push origin $current_branch
+
+echo "Rebase complete."

@@ -1,0 +1,96 @@
+#!/usr/local/bin/php
+<?php
+
+use Craft\App;
+
+if (php_sapi_name() !== 'cli') {
+    exit;
+}
+
+require_once __DIR__ . '/bootstrap.php';
+
+$app = new App(APP_CONSOLE);
+
+/**
+ * Scans specific directories for commands.php files and merges them into a single array.
+ *
+ * @param array $paths Paths to scan for commands.php files.
+ * @return array Merged commands.
+ */
+function loadCommands(array $paths, $app)
+{
+    $commands = [];
+
+    foreach ($paths as $path) {
+        if (is_dir($path)) {
+            $iterator = new RecursiveIteratorIterator(
+                new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)
+            );
+
+            foreach ($iterator as $file) {
+                if ($file->getFilename() === 'commands.php') {
+                    //fwrite(STDOUT, sprintf("Loading commands from: %s\n", $file->getPathname()));
+
+                    $packageCommands = include $file->getPathname();
+
+                    // If the file returns a function, call it with $app
+                    if (is_callable($packageCommands)) {
+                        $packageCommands = $packageCommands($app);
+                    }
+
+                    if (is_array($packageCommands)) {
+                        $commands = array_merge($commands, $packageCommands);
+                    } else {
+                        fwrite(STDERR, sprintf(
+                            'Invalid or empty commands in file: %s\n',
+                            $file->getPathname()
+                        ));
+                    }
+                }
+            }
+        }
+    }
+
+    return $commands;
+}
+
+
+// Define paths to search for commands.php
+$searchPaths = [
+    APP_DIR . '/config',
+    APP_DIR . '/vendor',
+];
+
+// Load and merge all commands
+$commands = loadCommands($searchPaths, $app);
+
+// Register commands in the App
+foreach ($commands as $name => $data) {
+    if (isset($data['callback'], $data['description'])) {
+        $app->registerCommand($name, $data['callback'], $data['description']);
+    } else {
+        fwrite(STDERR, sprintf(_('Command "%s" is missing callback or description.') . '\n', $name));
+    }
+}
+// Ensure at least one command argument is provided
+if (count($argv) < 2) {
+    $argv[1] = 'help';
+}
+
+// Implement a custom help command
+$app->registerCommand('help', function () use ($commands) {
+    echo _("Available Commands:") . "\n\n";
+    foreach ($commands as $name => $data) {
+        printf("  %-15s %s\n", $name, $data['description'] ?? _('No description provided.'));
+    }
+    echo "\n";
+});
+
+// Execute the command
+try {
+    $app->runCommand($argv);
+} catch (Exception $e) {
+    fwrite(STDERR, sprintf("Error: %s\n", $e->getMessage()));
+    $app->printSignature();
+    exit(1);
+}

@@ -1,0 +1,58 @@
+<phpunit colors="true" 
+         testdox="false" 
+         bootstrap="tests/autoload.php">
+  <testsuites>
+    <testsuite name="uadmin">
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/IntegrationTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/MenuTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/PersonGroupTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/PersonTypeTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/RoleTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/PersonTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/UserTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/PersonDeleteTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/PersonTypeDeleteTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Admin/PersonGroupDeleteTest.php</directory>
+    </testsuite>
+    <testsuite name="ulog">
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Log</directory>
+    </testsuite>
+    <testsuite name="ublog">
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Blog/CategoryTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Blog/StatusTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Blog/TagTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Blog/PostTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Blog/CategoryDeleteTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Blog/StatusDeleteTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Unit/Blog/TagDeleteTest.php</directory>
+    </testsuite> 
+    <!--<testsuite name="iservice">
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ContractTypeTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ContractTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ContractItemsTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/InvoiceItemsTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/InvoiceTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/IssueCategoryTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/IssueNoteFileTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/IssueNoteTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/IssuePriorityTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/IssueStatusTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/IssueTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ProjectFilesTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ProjectMemberTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ProjectServiceTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ProjectStatusTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ProjectTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ServiceTest.php</directory>
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Integration/Service/ServiceTypeTest.php</directory>
+    </testsuite> -->
+    <testsuite name="aadmin">
+      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests/Api/Admin/AddressControllerTest.php</directory>
+  </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">src/</directory>
+    </whitelist>
+</filter>
+</phpunit>
