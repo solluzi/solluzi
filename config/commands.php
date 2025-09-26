@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Craft\CommandCall;
+use Solluzi\CommandCall;
 
 return function ($app) {
     return [
