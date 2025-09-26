@@ -17,10 +17,7 @@
     },
     "require": {
         "php": ">=8.1",
-        "vlucas/phpdotenv": "^5.4",
-        "solluzi/view": "^1.0",
-        "solluzi/application": "^1.0.26",
-        "solluzi/cli": "^1.0.0"
+        "vlucas/phpdotenv": "^5.4"
     },
     "autoload": {
         "psr-4": {
