@@ -1,5 +1,8 @@
 vendor
 .env
+env.local
+.env.*.local
+env.model
 storage/cache/*
 !storage/cache/.gitkeep
 storage/logs/*
