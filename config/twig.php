@@ -6,7 +6,7 @@ return [
     'default' => [
         'templates' => [
             path('templates'),             // raiz
-            'site'  => path('app/Website/View'),   // @Site
+            'framework'  => path('app/Default/template'),   // @Site
         ],
         'cache' => path('storage/twig'),
     ],

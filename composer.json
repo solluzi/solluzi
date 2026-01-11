@@ -1,47 +1,84 @@
 {
-    "name": "solluzi/solluzi",
-    "description": "Este projeto \u00e9 de responsabilidade da Solluzi, este projeto se destina ao desenvolvimento de sistemas",
-    "authors": [
-        {
-            "email": "mauro.miranda@codesolluzi.com",
-            "homepage": "http://codesolluzi.com",
-            "name": "Mauro Miranda",
-            "role": "CTO"
-        }
-    ],
-    "require-dev": {
-        "squizlabs/php_codesniffer": "3.*",
-        "phpmd/phpmd": "@stable",
-        "phpunit/phpunit": "^9.6",
-        "phpunit/php-code-coverage": "^9.2"
-    },
-    "require": {
-        "php": ">=8.1",
-        "vlucas/phpdotenv": "^5.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "Admin\\": "app/Admin/",
-            "Default\\": "app/Default/",
-            "Test\\": "app/Test/"
-        }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "cp .env.example .env || copy .env.example .env"
-        ],
-        "check": [
-            "@cs-check",
-            "@test"
-        ],
-        "setup": "composer install",
-        "autoload": "composer dump-autoload -o",
-        "cs-check": "phpcs",
-        "cs-fix": "phpcbf"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Test\\": "tests"
-        }
+  "name": "solluzi/solluzi",
+  "description": "Este projeto é de responsabilidade da Solluzi, este projeto se destina ao desenvolvimento de sistemas",
+  "authors": [
+    {
+      "email": "mauro.miranda@codesolluzi.com",
+      "homepage": "http://codesolluzi.com",
+      "name": "Mauro Miranda",
+      "role": "CTO"
     }
+  ],
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*",
+    "phpmd/phpmd": "@stable",
+    "phpunit/phpunit": "^9.6",
+    "phpunit/php-code-coverage": "^9.2"
+  },
+  "require": {
+    "php": ">=8.1",
+    "vlucas/phpdotenv": "^5.4",
+    "solluzi/router": "^1.0.2",
+    "solluzi/cli": "^1.0.0",
+    "solluzi/functions": "^v1.0.0",
+    "solluzi/view": "^1.0.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Default\\": "app/Default/",
+      "Test\\": "app/Test/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "cp .env.example .env || copy .env.example .env"
+    ],
+    "check": [
+      "@cs-check",
+      "@test"
+    ],
+    "setup": "composer install",
+    "autoload": "composer dump-autoload -o",
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\": "tests"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-router.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-http.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-orm.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-functions.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-cli.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-diactoros.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-stratigility.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-view.git"
+    }
+  ]
 }
