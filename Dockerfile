@@ -1,4 +1,4 @@
-FROM php:8.5-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 # Dependências para PHP e ambiente de dev
 RUN apk add --no-cache \
@@ -19,7 +19,7 @@ RUN apk add --no-cache \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copia configuração personalizada do PHP para dev
-COPY ./php.dev.ini /usr/local/etc/php/php.ini
+COPY ./php.ini /usr/local/etc/php/php.ini
 
 ENV TZ=America/Sao_Paulo
 

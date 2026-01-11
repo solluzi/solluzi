@@ -17,11 +17,15 @@
   },
   "require": {
     "php": ">=8.1",
-    "vlucas/phpdotenv": "^5.4"
+    "vlucas/phpdotenv": "^5.4",
+    "solluzi/router": "^1.0.2",
+    "solluzi/cli": "^1.0.0",
+    "solluzi/functions": "^v1.0.0",
+    "solluzi/view": "^1.0.7"
   },
   "autoload": {
     "psr-4": {
-      "Admin\\": "app/Admin/",
+      "Default\\": "app/Default/",
       "Test\\": "app/Test/"
     }
   },
@@ -42,5 +46,39 @@
     "psr-4": {
       "Test\\": "tests"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-router.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-http.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-orm.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-functions.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-cli.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-diactoros.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-stratigility.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/solluzi/solluzi-view.git"
+    }
+  ]
 }
